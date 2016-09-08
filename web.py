@@ -25,7 +25,7 @@ def index():
 	# get map based on bars
 	if bars: 
 		mymap = get_map(bars)
-
+		return render_template('index.html', bars=bars)
 	# render 
 	return render_template('index.html', bars=bars, mymap=mymap)
 
