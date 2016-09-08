@@ -25,9 +25,9 @@ def index():
 	# get map based on bars
 	if bars: 
 		mymap = get_map(bars)
-		return render_template('index.html', bars=bars)
-	# render 
-	return render_template('index.html', bars=bars, mymap=mymap)
+		return render_template('index.html', bars=bars, mymap=mymap)
+	else:
+		return render_template('index.html', bars=bars, mymap=None)
 
 @app.route("/about")
 def about():
