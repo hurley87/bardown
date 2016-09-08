@@ -18,7 +18,7 @@ def find_bars(address):
 	params = {
 	    'term': 'bar',
 	    'limit': 3,
-	    'sort': 1
+	    'sort': 0
 	}
 
 	response = client.search(address, **params)
@@ -28,7 +28,8 @@ def find_bars(address):
 	    bars.append({
 	    	'name': business.name,
 	    	'phone': business.display_phone,
-	    	'rating': business.rating,
+	    	'image': business.image_url,
+	    	'rating': business.rating_img_url_small,
 	    	'location': business.location.display_address[0],
 	    	'lat': business.location.coordinate.latitude,
 	    	'long': business.location.coordinate.longitude
