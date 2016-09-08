@@ -1,12 +1,16 @@
 from flask import Flask, render_template, request
 import os
+from yelp_api import find_bars
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-	bar = request.values.get('bar')
-	print(bar)
-	return render_template('index.html', bar=bar)
+	address = request.values.get('address')
+	bars = []
+	if address:
+		bars = find_bars(address)
+		print(bars)
+	return render_template('index.html', bars=bars)
 
 @app.route("/about")
 def about():

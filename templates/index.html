@@ -11,14 +11,15 @@
 			<h1>Whats up</h1>
 			<p><a href="{{ url_for('about') }}">About</a></p>
 			<form action='/'>
-				<input type="text" name="bar">
+				<input type="text" name="address">
 				<input type="submit">
 			</form>
-
-			{% if bar %}
-				<p>{{bar}}</p>
+			{% if bars %}
+				{% for bar in bars %}
+					<p>{{bar.name}}</p>
+				{% endfor %}
 			{% else %}  
-				<p>No bar</p>
+				<p>No bars</p>
 			{% endif %}
 		</div>
 	</body>
