@@ -11,6 +11,7 @@ load_dotenv(find_dotenv())
 
 app = Flask(__name__)
 
+# set secret key for session vars
 app.secret_key = os.urandom(24)
 
 # initialize Google maps with API key
@@ -25,22 +26,20 @@ def index():
 
 @app.route("/verify")
 def verify():
-	# get user submitted address from URL
+	# get params from request
 	number = request.values.get('number')
-	session['number'] = number
 	code = request.values.get('code')
 	verify = request.values.get('verify')
 
-	print(number)
-	print(code)
-	print(verify)
+	# store number is session var
+	session['number'] = number
 
 	if verify == '':
 		# send code to user in a text
 		verified = send_text(code, "+1{}".format(number))
 		return render_template('verify.html', number=number, code=code, verify=verify)
 	else:
-		print(code == verify)
+		# if code is verified redirect to search
 		if code == verify:
 			return redirect('search')
 		else:
@@ -49,17 +48,16 @@ def verify():
 
 @app.route("/search")
 def search():
+	# get address from params and number from session var
 	address = request.values.get('address')
 	number = session['number']
-
-	print(number)
 
 	# find bars based on address
 	bars = []
 	if address:
 		bars = find_bars(address)
 
-	# get map based on bars
+	# map top 3 bars
 	if bars: 
 		mymap = get_map(bars)
 

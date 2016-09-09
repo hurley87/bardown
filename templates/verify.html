@@ -8,13 +8,10 @@
 	</head>
 	<body>
 		<div class="jumbotron">
-			{% if bars %}
-			<p class="text-center">Try another search</p>
-			{% else %}
-			<h1 class="text-center">Almost there</h1>
+			<h1 class="text-center">Almost there...</h1>
 			<p class='text-center'>Enter the special code we just texted you.</p>
+			<p class="text-center"><a href="/">No code? Try submitting your number again.</a></p>
 			<br/>
-			{% endif %}
 			<div class="col-sm-4 col-sm-offset-4">
 				<form action='/verify' class="form-inline">
 					<div class="form-group">
@@ -24,7 +21,6 @@
 						<input type="submit" class="btn btn-primary" value='Verify'>
 					</div>
 				</form>
-				<p><a href="/">No code? Try submitting your number again.</a></p>
 			</div>
 			<br/>
 			<br/>
@@ -35,7 +31,7 @@
 				<br/>
 				<p class="text-center"><img src="http://www.pngall.com/wp-content/uploads/2016/03/Beer-PNG-8.png"></p> 
 				<br/>
-				<p class="text-center">Pubstars uses a sophisticated AI to match your location with the best pubs.</p>
+				<p class="text-center">We promise to only spam you with the best pubs.</p>
 			</div>
 		</div>
 	</body>
