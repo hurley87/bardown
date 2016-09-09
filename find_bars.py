@@ -17,8 +17,7 @@ def find_bars(address):
 
 	params = {
 	    'term': 'bar',
-	    'limit': 3,
-	    'sort': 0
+	    'limit': 3
 	}
 
 	response = client.search(address, **params)
